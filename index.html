@@ -252,6 +252,24 @@
     color:#9a958a;
   }
 
+  /* ---------- IMG FALLBACK (cuando no hay carpeta assets) ---------- */
+  .frame img, .imgwrap img{ display:block; }
+  .frame.img-error, .imgwrap.img-error{
+    position:relative;
+    background:linear-gradient(135deg, var(--sage), var(--moss));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:140px;
+  }
+  .frame.img-error img, .imgwrap.img-error img{ display:none; }
+  .frame.img-error::after, .imgwrap.img-error::after{
+    content:"🐾";
+    font-size:42px;
+    opacity:.85;
+  }
+  .imgwrap.img-error::after{ font-size:30px; }
+
   /* ---------- MAIN CONTENT ---------- */
   nav{
     position:sticky; top:0; z-index:30;
@@ -586,7 +604,7 @@
       </div>
     </div>
     <div class="hero-art" style="position:relative;z-index:1;">
-      <div class="frame"><img src="assets/hero.png" alt="Baño Inteligente TecnoPet"></div>
+      <div class="frame"><img src="assets/hero.png" alt="Baño Inteligente TecnoPet" onerror="this.parentElement.classList.add('img-error')"></div>
     </div>
   </header>
 
@@ -616,11 +634,15 @@
         </div>
         <h2 id="reg-title">Crea tu cuenta</h2>
         <p class="sub" id="reg-sub">Es gratis y toma menos de un minuto.</p>
-        <form id="login-form">
-          <div class="field" id="field-name">
-            <label>Nombre</label>
-            <input type="text" placeholder="Tu nombre" required>
-          </div>
+
+        <div id="register-frame-wrap">
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdrTY_n9_ka5FSBNrl6Qhq705lUuxPuFyJIHZ7R8T2dIS7BEg/viewform?embedded=true"
+            width="100%" height="520" frameborder="0" marginheight="0" marginwidth="0" style="border-radius:14px;">
+            Cargando…
+          </iframe>
+        </div>
+
+        <form id="login-form" style="display:none;">
           <div class="field">
             <label>Correo</label>
             <input type="email" placeholder="tú@correo.com" required>
@@ -629,9 +651,9 @@
             <label>Contraseña</label>
             <input type="password" placeholder="••••••••" required>
           </div>
-          <button type="submit" class="login-btn" id="reg-submit">Crear cuenta</button>
+          <button type="submit" class="login-btn" id="reg-submit">Iniciar sesión</button>
         </form>
-        <div class="login-foot">Cualquier dato te da acceso a la demo.</div>
+        <div class="login-foot" id="reg-foot">Tus datos se guardan de forma segura en nuestro registro.</div>
       </div>
     </div>
   </section>
@@ -708,19 +730,19 @@
     </div>
     <div class="steps">
       <div class="step-card">
-        <div class="imgwrap"><span class="step-no">PASO 1</span><img src="assets/tiles/r0_c0.png" alt="Cajón de residuos"></div>
+        <div class="imgwrap"><span class="step-no">PASO 1</span><img src="assets/tiles/r0_c0.png" alt="Cajón de residuos" onerror="this.parentElement.classList.add('img-error')"></div>
         <div class="cap"><h3>Abre el cajón de residuos</h3><p>Se desliza sobre la fuente existente, sin desmontar nada.</p></div>
       </div>
       <div class="step-card">
-        <div class="imgwrap"><span class="step-no">PASO 2</span><img src="assets/tiles/r0_c1.png" alt="Manejo de residuos"></div>
+        <div class="imgwrap"><span class="step-no">PASO 2</span><img src="assets/tiles/r0_c1.png" alt="Manejo de residuos" onerror="this.parentElement.classList.add('img-error')"></div>
         <div class="cap"><h3>Manejo integral de residuos</h3><p>Separa sólidos y líquidos con forro de cajón biodegradable.</p></div>
       </div>
       <div class="step-card">
-        <div class="imgwrap"><span class="step-no">PASO 3</span><img src="assets/tiles/r0_c2.png" alt="Perro usando el producto"></div>
+        <div class="imgwrap"><span class="step-no">PASO 3</span><img src="assets/tiles/r0_c2.png" alt="Perro usando el producto" onerror="this.parentElement.classList.add('img-error')"></div>
         <div class="cap"><h3>Tu perro hace lo suyo</h3><p>Superficie de césped sintético, cómoda para uso diario.</p></div>
       </div>
       <div class="step-card">
-        <div class="imgwrap"><span class="step-no">PASO 4</span><img src="assets/tiles/r0_c3.png" alt="Bandeja de orine removible"></div>
+        <div class="imgwrap"><span class="step-no">PASO 4</span><img src="assets/tiles/r0_c3.png" alt="Bandeja de orine removible" onerror="this.parentElement.classList.add('img-error')"></div>
         <div class="cap"><h3>Bandeja de orine removible</h3><p>Revestimiento antimicrobiano, nivel visible hasta 650 ml.</p></div>
       </div>
     </div>
@@ -734,19 +756,19 @@
     </div>
     <div class="functions-wrap">
       <div class="step-card">
-        <div class="imgwrap"><img src="assets/tiles/r1_c0.png" alt="Mecanismo de rodillo"></div>
+        <div class="imgwrap"><img src="assets/tiles/r1_c0.png" alt="Mecanismo de rodillo" onerror="this.parentElement.classList.add('img-error')"></div>
         <div class="cap"><h3>Filtración y derivación de sólidos</h3><p>Mecanismo de rodillo que separa y traslada los residuos.</p></div>
       </div>
       <div class="step-card">
-        <div class="imgwrap"><img src="assets/tiles/r1_c1.png" alt="Extracción total y limpieza"></div>
+        <div class="imgwrap"><img src="assets/tiles/r1_c1.png" alt="Extracción total y limpieza" onerror="this.parentElement.classList.add('img-error')"></div>
         <div class="cap"><h3>Extracción total y limpieza</h3><p>Bota y reemplaza el forro en segundos, sin tocar residuos.</p></div>
       </div>
       <div class="step-card">
-        <div class="imgwrap"><img src="assets/tiles/r1_c2.png" alt="Panel de preferencias"></div>
+        <div class="imgwrap"><img src="assets/tiles/r1_c2.png" alt="Panel de preferencias" onerror="this.parentElement.classList.add('img-error')"></div>
         <div class="cap"><h3>Panel de preferencias</h3><p>Botones físicos para horarios sin depender siempre del celular.</p></div>
       </div>
       <div class="step-card">
-        <div class="imgwrap"><img src="assets/tiles/r1_c3.png" alt="Cargando, césped intercambiable"></div>
+        <div class="imgwrap"><img src="assets/tiles/r1_c3.png" alt="Cargando, césped intercambiable" onerror="this.parentElement.classList.add('img-error')"></div>
         <div class="cap"><h3>Carga e césped intercambiable</h3><p>Lados de césped intercambiables para mantener todo fresco.</p></div>
       </div>
     </div>
@@ -760,7 +782,45 @@
       <p>Vota en cada pregunta y mira en vivo qué piensa el resto de la comunidad. Puedes elegir una opción por pregunta.</p>
     </div>
     <div class="poll-list" id="poll-list"></div>
+
+    <div class="feedback-box">
+      <span class="kicker">Cuéntanos más</span>
+      <h3>¿Cómo podemos mejorar? Danos tu opinión</h3>
+      <p>Escribe tu comentario y nos llegará directo a nuestro registro de opiniones.</p>
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScN_VPoyEl1gHymz-lZNnxiYdWs9YL-1epx8NSJRIlhJ94PGA/viewform?embedded=true"
+        width="100%" height="480" frameborder="0" marginheight="0" marginwidth="0" style="border-radius:14px;">
+        Cargando…
+      </iframe>
+    </div>
   </section>
+
+  <style>
+    .feedback-box{
+      max-width:760px;
+      margin:46px auto 0;
+      background:var(--white);
+      border-radius:20px;
+      padding:36px 38px;
+      box-shadow:var(--shadow);
+    }
+    .feedback-box h3{font-size:22px; color:var(--ink); margin:6px 0 8px;}
+    .feedback-box > p{color:#7a766d; font-size:14.5px; margin-bottom:18px;}
+    .feedback-box textarea{
+      width:100%;
+      min-height:120px;
+      resize:vertical;
+      border:1.5px solid #e5e1d6;
+      border-radius:14px;
+      padding:14px 16px;
+      font-family:'Inter',sans-serif;
+      font-size:14.5px;
+      color:var(--ink);
+      margin-bottom:16px;
+      box-sizing:border-box;
+    }
+    .feedback-box textarea:focus{outline:none; border-color:var(--moss);}
+    .feedback-box .login-btn{width:auto; padding:12px 28px;}
+  </style>
 
   <footer>
     <div class="foot-grid">
@@ -783,8 +843,8 @@
   const tabLogin = document.getElementById('tab-login');
   const regTitle = document.getElementById('reg-title');
   const regSub = document.getElementById('reg-sub');
-  const regSubmit = document.getElementById('reg-submit');
-  const fieldName = document.getElementById('field-name');
+  const regFoot = document.getElementById('reg-foot');
+  const registerFrameWrap = document.getElementById('register-frame-wrap');
   const loginForm = document.getElementById('login-form');
 
   function setMode(mode){
@@ -793,15 +853,17 @@
       tabRegister.classList.remove('active');
       regTitle.textContent = 'Bienvenido de vuelta';
       regSub.textContent = 'Ingresa para ver tu Baño Inteligente y su panel de uso.';
-      regSubmit.textContent = 'Iniciar sesión';
-      fieldName.style.display = 'none';
+      regFoot.textContent = 'Tus datos se guardan de forma segura en nuestro registro.';
+      registerFrameWrap.style.display = 'none';
+      loginForm.style.display = '';
     } else {
       tabRegister.classList.add('active');
       tabLogin.classList.remove('active');
       regTitle.textContent = 'Crea tu cuenta';
       regSub.textContent = 'Es gratis y toma menos de un minuto.';
-      regSubmit.textContent = 'Crear cuenta';
-      fieldName.style.display = '';
+      regFoot.textContent = 'Tus datos se guardan de forma segura en nuestro registro.';
+      registerFrameWrap.style.display = '';
+      loginForm.style.display = 'none';
     }
   }
   tabRegister.addEventListener('click', ()=> setMode('register'));
@@ -809,7 +871,7 @@
 
   loginForm.addEventListener('submit', function(e){
     e.preventDefault();
-    regSubmit.textContent = '¡Listo! Bienvenido a TecnoPet 🐾';
+    regFoot.textContent = '¡Listo! Bienvenido a TecnoPet 🐾';
   });
 
   // ---- Poll / survey data ----
@@ -836,13 +898,12 @@
       ]
     },
     {
-      q: "¿Qué tan dispuesto estarías a comprarlo?",
+      q: "¿Te resulta útil o soluciona tu problema? ¿Estarías dispuesto a adquirirlo?",
       meta: "176 votos",
       total: 176,
       options: [
-        {label:"Lo compraría apenas salga", votes:81},
-        {label:"Esperaría reseñas primero", votes:62},
-        {label:"Aún no estoy seguro", votes:33},
+        {label:"Sí", votes:142},
+        {label:"No", votes:34},
       ]
     }
   ];
@@ -901,7 +962,9 @@
   }
 
   polls.forEach((p,i)=> pollList.appendChild(renderPoll(p,i)));
+
 </script>
 
 </body>
 </html>
+
